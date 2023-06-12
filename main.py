@@ -84,7 +84,7 @@ class ZkBridge(Help):
             'publicKey': self.address.lower(),
         }
 
-        print(json_data)
+      
         while True:
             try:
                 if self.proxy:
@@ -111,7 +111,7 @@ class ZkBridge(Help):
                         'publicKey': self.address,
                         'signedMessage': signature,
                     }
-                    print(signature)
+                    
                     return signature, ua
             except Exception as e:
                 logger.error(f'{self.address}:{self.chain} - {e}')
@@ -141,7 +141,7 @@ class ZkBridge(Help):
             'publicKey': self.address.lower(),
             'signedMessage': signature,
         }
-        print(json_data)
+       
         while True:
             try:
 
@@ -152,7 +152,7 @@ class ZkBridge(Help):
                                              proxies=proxies)
                 else:
                     response = requests.post('https://api.zkbridge.com/api/signin', headers=headers, json=json_data)
-                print(response.text)
+                
                 if response.status_code == 200:
                     token = json.loads(response.text)['token']
                     headers['authorization'] = f'Bearer {token}'
